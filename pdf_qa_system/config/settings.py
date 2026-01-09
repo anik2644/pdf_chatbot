@@ -29,14 +29,14 @@ class Settings(BaseSettings):
     huggingface_api_key: Optional[str] = Field(default=None, alias="HF_TOKEN")
 
     # Default LLM settings
-    # default_llm_provider: str = Field(default="huggingface_pipeline", alias="DEFAULT_LLM_PROVIDER")
-    # default_llm_model: str = Field(default="TinyLlama/TinyLlama-1.1B-Chat-v1.0", alias="DEFAULT_LLM_MODEL")
-    # default_model_name: str = Field(default="TinyLlama/TinyLlama-1.1B-Chat-v1.0", alias="DEFAULT_MODEL_NAME")
+    default_llm_provider: str = Field(default="huggingface_pipeline", alias="DEFAULT_LLM_PROVIDER")
+    default_llm_model: str = Field(default="TinyLlama/TinyLlama-1.1B-Chat-v1.0", alias="DEFAULT_LLM_MODEL")
+    default_model_name: str = Field(default="TinyLlama/TinyLlama-1.1B-Chat-v1.0", alias="DEFAULT_MODEL_NAME")
 
     # Default LLM settings
-    default_llm_provider: str = Field(default="groq", alias="DEFAULT_LLM_PROVIDER")
-    default_llm_model: str = Field(default="llama-3.1-8b-instant", alias="DEFAULT_LLM_MODEL")
-    default_model_name: str = Field(default="llama-3.1-8b-instant", alias="DEFAULT_MODEL_NAME")
+    # default_llm_provider: str = Field(default="groq", alias="DEFAULT_LLM_PROVIDER")
+    # default_llm_model: str = Field(default="llama-3.1-8b-instant", alias="DEFAULT_LLM_MODEL")
+    # default_model_name: str = Field(default="llama-3.1-8b-instant", alias="DEFAULT_MODEL_NAME")
 
 
     # Default Embeddings settings
