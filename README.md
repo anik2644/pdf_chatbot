@@ -1,13 +1,11 @@
 # PDF Chatbot
 
 
-[Maintainers & Contact](#maintainers--contact)
-
 ---
 
 ## Project Overview
 
-SNSOP Chatbot is a conversational assistant intended to support social network operations (SNSOP) workflows. Typical uses include incident creation and tracking, automated notifications, health checks, runbook lookups, and integrations with ticketing, monitoring, and chat platforms.
+PDF Chatbot is a conversational assistant intended to support social network operations (PDF) workflows. Typical uses include incident creation and tracking, automated notifications, health checks, runbook lookups, and integrations with ticketing, monitoring, and chat platforms.
 
 This repository contains:
 - Bot connectors/adapters for supported platforms
@@ -68,8 +66,8 @@ High-level components:
 
 Clone the repository:
 ```bash
-git clone https://github.com/anik2644/snsop_chatbot.git
-cd snsop_chatbot
+git clone https://github.com/anik2644/PDF_chatbot.git
+cd PDF_chatbot
 ```
 
 Install dependencies (choose appropriate block for your language stack):
@@ -109,7 +107,7 @@ TELEGRAM_BOT_TOKEN=your-telegram-bot-token
 OPENAI_API_KEY=your-openai-api-key
 
 # Database
-DATABASE_URL=postgres://user:pass@localhost:5432/snsop
+DATABASE_URL=postgres://user:pass@localhost:5432/PDF
 REDIS_URL=redis://localhost:6379/0
 
 # Other
@@ -162,12 +160,12 @@ Then update platform webhook URLs to point at the public ngrok URL.
 
 Build the Docker image:
 ```bash
-docker build -t snsop_chatbot:latest .
+docker build -t PDF_chatbot:latest .
 ```
 
 Run with environment variables:
 ```bash
-docker run --env-file .env -p 3000:3000 snsop_chatbot:latest
+docker run --env-file .env -p 3000:3000 PDF_chatbot:latest
 ```
 
 If a `docker-compose.yml` exists:
