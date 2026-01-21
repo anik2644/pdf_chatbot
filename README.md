@@ -1,32 +1,7 @@
-# SNSOP Chatbot
+# PDF Chatbot
 
-Comprehensive README for the `snsop_chatbot` repository. Replace placeholders and example values with repository-specific details.
 
----
-
-Table of Contents
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Tech Stack & Languages](#tech-stack--languages)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Environment Variables](#environment-variables)
-- [Running Locally](#running-locally)
-- [Docker (optional)](#docker-optional)
-- [Usage & Examples](#usage--examples)
-- [Testing](#testing)
-- [CI / CD](#ci--cd)
-- [Deployment](#deployment)
-- [Logging & Monitoring](#logging--monitoring)
-- [Troubleshooting & FAQs](#troubleshooting--faqs)
-- [Contributing](#contributing)
-- [Code of Conduct](#code-of-conduct)
-- [Security](#security)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Maintainers & Contact](#maintainers--contact)
+[Maintainers & Contact](#maintainers--contact)
 
 ---
 
