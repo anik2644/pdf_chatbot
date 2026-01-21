@@ -11,9 +11,9 @@ import os
 # Add the project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from pdf_qa_system.interface.terminal import TerminalInterface
-from pdf_qa_system.utils.logger import setup_logging, get_logger
-from pdf_qa_system.config.settings import get_settings
+from core.interface.terminal import TerminalInterface
+from core.utils.logger import setup_logging, get_logger
+from core.config.settings import get_settings
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -24,7 +24,7 @@ def parse_arguments() -> argparse.Namespace:
         epilog="""
 Examples:
   python main.py                                    # Start interactive mode
-  python main.py --file data/pdfs/BMM.pdf           # Load a PDF and start
+  python main.py --file vector_db/pdfs/BMM.pdf           # Load a PDF and start
   python main.py --provider gemini                  # Use Gemini as LLM provider
   python main.py --no-langgraph                     # Use simple chain instead of LangGraph
         """

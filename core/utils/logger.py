@@ -33,7 +33,7 @@ def get_logger(name: Optional[str] = None) -> logging.Logger:
     Returns:
         Configured logger instance
     """
-    logger_name = name or "pdf_qa_system"
+    logger_name = name or "core"
 
     if logger_name in _loggers:
         return _loggers[logger_name]

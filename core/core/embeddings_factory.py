@@ -5,9 +5,9 @@ Factory for creating Embeddings instances from various providers.
 from typing import Optional, Dict, Type
 from langchain_core.embeddings import Embeddings
 
-from pdf_qa_system.config.settings import get_settings
-from pdf_qa_system.core.base_providers import BaseEmbeddingsProvider
-from pdf_qa_system.utils.logger import get_logger
+from core.config.settings import get_settings
+from core.core.base_providers import BaseEmbeddingsProvider
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

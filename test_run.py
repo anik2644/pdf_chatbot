@@ -6,8 +6,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from pdf_qa_system.agents.qa_agent import QAAgent
-from pdf_qa_system.utils.logger import setup_logging
+from core.agents.qa_agent import QAAgent
+from core.utils.logger import setup_logging
 
 
 def main():
@@ -21,7 +21,7 @@ def main():
     )
 
     # Load PDF
-    pdf_path = "data/pdfs/BMM.pdf"
+    pdf_path = "assets/pdfs/BMM.pdf"
     print(f"📄 Loading PDF: {pdf_path}")
     agent.load_documents(file_path=pdf_path)
 

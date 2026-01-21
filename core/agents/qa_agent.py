@@ -4,16 +4,16 @@ Main QA Agent implementation.
 
 from typing import Optional, List, Dict, Any
 
-from pdf_qa_system.core.llm_factory import LLMFactory
-from pdf_qa_system.core.embeddings_factory import EmbeddingsFactory
-from pdf_qa_system.document_processing.processor import DocumentProcessor
-from pdf_qa_system.vectorstore.store_factory import VectorStoreFactory
-from pdf_qa_system.vectorstore.retriever import RetrieverFactory
-from pdf_qa_system.chains.qa_chain import QAChainFactory
-from pdf_qa_system.agents.graph.workflow import QAWorkflow
-from pdf_qa_system.agents.tools.tool_registry import ToolRegistry
-from pdf_qa_system.agents.tools.pdf_search_tool import PDFSearchTool
-from pdf_qa_system.utils.logger import get_logger
+from core.core.llm_factory import LLMFactory
+from core.core.embeddings_factory import EmbeddingsFactory
+from core.document_processing.processor import DocumentProcessor
+from core.vectorstore.store_factory import VectorStoreFactory
+from core.vectorstore.retriever import RetrieverFactory
+from core.chains.qa_chain import QAChainFactory
+from core.agents.graph.workflow import QAWorkflow
+from core.agents.tools.tool_registry import ToolRegistry
+from core.agents.tools.pdf_search_tool import PDFSearchTool
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

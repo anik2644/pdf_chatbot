@@ -8,8 +8,8 @@ from langchain_core.retrievers import BaseRetriever
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from pdf_qa_system.agents.graph.state import GraphState
-from pdf_qa_system.utils.logger import get_logger
+from core.agents.graph.state import GraphState
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

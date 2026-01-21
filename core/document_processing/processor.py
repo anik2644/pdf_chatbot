@@ -5,9 +5,9 @@ Document processor orchestrating loading and chunking.
 from typing import List, Optional
 from langchain_core.documents import Document
 
-from pdf_qa_system.document_processing.loader import DocumentLoader
-from pdf_qa_system.document_processing.chunker import TextChunker, ChunkingStrategy
-from pdf_qa_system.utils.logger import get_logger
+from core.document_processing.loader import DocumentLoader
+from core.document_processing.chunker import TextChunker, ChunkingStrategy
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

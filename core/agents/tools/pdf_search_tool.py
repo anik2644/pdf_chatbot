@@ -6,9 +6,9 @@ from typing import Optional, List
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 
-from pdf_qa_system.agents.tools.base_tool import BaseTool
-from pdf_qa_system.utils.logger import get_logger
-from pdf_qa_system.utils.helpers import truncate_text
+from core.agents.tools.base_tool import BaseTool
+from core.utils.logger import get_logger
+from core.utils.helpers import truncate_text
 
 logger = get_logger(__name__)
 

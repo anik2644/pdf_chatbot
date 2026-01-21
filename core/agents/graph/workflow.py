@@ -7,9 +7,9 @@ from langgraph.graph import StateGraph, END
 from langchain_core.language_models.base import BaseLanguageModel
 from langchain_core.retrievers import BaseRetriever
 
-from pdf_qa_system.agents.graph.state import GraphState
-from pdf_qa_system.agents.graph.nodes import GraphNodes
-from pdf_qa_system.utils.logger import get_logger
+from core.agents.graph.state import GraphState
+from core.agents.graph.nodes import GraphNodes
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

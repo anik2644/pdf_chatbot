@@ -7,7 +7,7 @@ from langchain_core.vectorstores import VectorStore
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 
-from pdf_qa_system.utils.logger import get_logger
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

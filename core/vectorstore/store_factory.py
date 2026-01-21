@@ -10,9 +10,9 @@ from langchain_core.vectorstores import VectorStore
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS, Chroma
 
-from pdf_qa_system.config.settings import get_settings
-from pdf_qa_system.utils.logger import get_logger
-from pdf_qa_system.utils.helpers import ensure_directory
+from core.config.settings import get_settings
+from core.utils.logger import get_logger
+from core.utils.helpers import ensure_directory
 
 logger = get_logger(__name__)
 

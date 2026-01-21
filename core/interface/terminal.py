@@ -15,10 +15,10 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.syntax import Syntax
 from rich.text import Text
 
-from pdf_qa_system.agents.qa_agent import QAAgent
-from pdf_qa_system.utils.logger import get_logger, setup_logging
-from pdf_qa_system.config.settings import get_settings
-from pdf_qa_system.utils.answer_cleaner import clean_answer, format_answer_for_display
+from core.agents.qa_agent import QAAgent
+from core.utils.logger import get_logger, setup_logging
+from core.config.settings import get_settings
+from core.utils.answer_cleaner import clean_answer, format_answer_for_display
 logger = get_logger(__name__)
 console = Console()
 

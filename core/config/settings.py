@@ -46,8 +46,8 @@ class Settings(BaseSettings):
     # Vector store settings
     vector_store_type: str = Field(default="faiss", alias="VECTOR_STORE_TYPE")
     default_vector_store: str = Field(default="faiss", alias="DEFAULT_VECTOR_STORE")
-    chroma_persist_directory: str = Field(default="./data/chroma_db", alias="CHROMA_PERSIST_DIRECTORY")
-    faiss_persist_directory: str = Field(default="./data/faiss_db", alias="FAISS_PERSIST_DIRECTORY")
+    chroma_persist_directory: str = Field(default="./vector_db/chroma_db", alias="CHROMA_PERSIST_DIRECTORY")
+    faiss_persist_directory: str = Field(default="./vector_db/faiss_db", alias="FAISS_PERSIST_DIRECTORY")
 
     # Chunking settings
     chunk_size: int = Field(default=1000, alias="CHUNK_SIZE")

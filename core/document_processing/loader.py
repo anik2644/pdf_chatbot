@@ -6,8 +6,8 @@ from pathlib import Path
 from typing import List, Optional
 from langchain_core.documents import Document
 
-from pdf_qa_system.utils.logger import get_logger
-from pdf_qa_system.utils.helpers import validate_file_path, get_file_extension
+from core.utils.logger import get_logger
+from core.utils.helpers import validate_file_path, get_file_extension
 
 logger = get_logger(__name__)
 

@@ -5,8 +5,8 @@ Tool registry for managing available tools.
 from typing import Dict, List, Optional, Type
 from langchain_core.tools import BaseTool as LangChainBaseTool
 
-from pdf_qa_system.agents.tools.base_tool import BaseTool
-from pdf_qa_system.utils.logger import get_logger
+from core.agents.tools.base_tool import BaseTool
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

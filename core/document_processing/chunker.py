@@ -11,8 +11,8 @@ from langchain_text_splitters import (
     TokenTextSplitter,
 )
 
-from pdf_qa_system.config.settings import get_settings
-from pdf_qa_system.utils.logger import get_logger
+from core.config.settings import get_settings
+from core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
