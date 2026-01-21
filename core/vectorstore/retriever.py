@@ -21,7 +21,7 @@ class RetrieverFactory:
     def create_basic_retriever(
             self,
             search_type: str = "similarity",
-            k: int = 4,
+            k: int = 1,
             **kwargs
     ) -> BaseRetriever:
         """Create a basic retriever."""
@@ -34,7 +34,7 @@ class RetrieverFactory:
 
     def create_mmr_retriever(
             self,
-            k: int = 4,
+            k: int = 1,
             fetch_k: int = 20,
             lambda_mult: float = 0.5,
             **kwargs
@@ -57,7 +57,7 @@ class RetrieverFactory:
     def create_threshold_retriever(
             self,
             score_threshold: float = 0.5,
-            k: int = 4,
+            k: int = 1,
             **kwargs
     ) -> BaseRetriever:
         """Create a retriever with score threshold."""

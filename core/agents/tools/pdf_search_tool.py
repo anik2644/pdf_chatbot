@@ -19,7 +19,7 @@ class PDFSearchTool(BaseTool):
     def __init__(
             self,
             retriever: BaseRetriever,
-            k: int = 4,
+            k: int = 1,
             include_metadata: bool = True
     ):
         self.retriever = retriever

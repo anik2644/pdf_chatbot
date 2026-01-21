@@ -4,10 +4,13 @@ Document loading utilities.
 
 from pathlib import Path
 from typing import List, Optional
+
+import PyPDF2
 from langchain_core.documents import Document
 
 from core.utils.logger import get_logger
 from core.utils.helpers import validate_file_path, get_file_extension
+import re
 
 logger = get_logger(__name__)
 
@@ -42,6 +45,15 @@ class DocumentLoader:
 
         logger.info(f"Loaded {len(documents)} document(s) from {file_path}")
         return documents
+
+    def extract_text_from_pdf(self, pdf_path):
+        parts = []
+        with open(pdf_path, "rb") as f:
+            reader = PyPDF2.PdfReader(f)
+            for page in reader.pages:
+                parts.append(page.extract_text() or "")
+        return "\n".join(parts)
+
 
     def _load_pdf(self, path: Path) -> List[Document]:
         """Load a PDF document."""

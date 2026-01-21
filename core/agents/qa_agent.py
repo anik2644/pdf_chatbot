@@ -182,7 +182,7 @@ class QAAgent:
 
         # Create retriever
         retriever_factory = RetrieverFactory(self.vector_store)
-        self.retriever = retriever_factory.create_basic_retriever(k=4)
+        self.retriever = retriever_factory.create_basic_retriever(k=1)
 
         # Register PDF search tool
         pdf_tool = PDFSearchTool(retriever=self.retriever)
@@ -198,7 +198,7 @@ class QAAgent:
     def set_retriever_config(
         self,
         search_type: str = "similarity",
-        k: int = 4,
+        k: int = 1,
         score_threshold: Optional[float] = None,
         fetch_k: Optional[int] = None,
         lambda_mult: Optional[float] = None
@@ -304,7 +304,7 @@ class QAAgent:
 
         return self.query(enhanced_question)
 
-    def get_relevant_documents(self, query: str, k: int = 4) -> List[Dict[str, Any]]:
+    def get_relevant_documents(self, query: str, k: int = 1) -> List[Dict[str, Any]]:
         """Get relevant documents without generating an answer."""
         if not self.retriever:
             raise RuntimeError("Retriever not initialized")

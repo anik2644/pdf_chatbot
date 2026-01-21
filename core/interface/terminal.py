@@ -273,7 +273,7 @@ Type `/quit` or `/exit` to exit.
                     transient=True
             ) as progress:
                 task = progress.add_task("Searching...", total=None)
-                results = self.agent.get_relevant_documents(query.strip(), k=5)
+                results = self.agent.get_relevant_documents(query.strip(), k=1)
                 progress.remove_task(task)
 
             if not results:
@@ -375,8 +375,8 @@ Type `/quit` or `/exit` to exit.
             raw_answer = result.get("answer", "No answer generated")
 
             # Clean and format it
-            cleaned_answer = clean_answer(raw_answer)
-            formatted_answer = format_answer_for_display(cleaned_answer)
+            # cleaned_answer = clean_answer(raw_answer)
+            formatted_answer = format_answer_for_display(raw_answer)
 
             console.print()
             console.print(Panel(

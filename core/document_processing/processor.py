@@ -4,11 +4,12 @@ Document processor orchestrating loading and chunking.
 
 from typing import List, Optional
 from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from core.document_processing.loader import DocumentLoader
 from core.document_processing.chunker import TextChunker, ChunkingStrategy
 from core.utils.logger import get_logger
-
+import re
 logger = get_logger(__name__)
 
 
@@ -30,14 +31,39 @@ class DocumentProcessor:
 
     def process_file(self, file_path: str) -> List[Document]:
         """Load and process a single file."""
-        documents = self.loader.load(file_path)
-        chunks = self.chunker.chunk_documents(documents)
+        text = self.loader.extract_text_from_pdf(file_path)
+        print(f"file type: {type(text)}")
 
-        # Add source metadata
-        for chunk in chunks:
-            chunk.metadata["source_file"] = file_path
+        segments = self.split_by_tags(text)
+
+        print(f"📘 Loaded PDF with {len(segments)} segments")
+
+        if not segments:
+            # Fallback to text splitting if no tags found
+            print("📘 No tags found, using text splitter...")
+            splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+            segments = splitter.split_text(text)
+
+        # Convert strings to Document objects
+        chunks = [
+            Document(
+                page_content=segment,
+                metadata={"source": file_path}
+            )
+            for segment in segments
+        ]
 
         return chunks
+
+
+    def split_by_tags(self, text):
+        pattern = r'\(START#\)(.*?)\(#END\)'
+        segments = re.findall(pattern, text, re.DOTALL)
+        cleaned_segments = []
+        for segment in segments:
+            cleaned_segment = re.sub(r'\s+', ' ', segment.strip())
+            cleaned_segments.append(cleaned_segment)
+        return cleaned_segments
 
     def process_directory(
             self,
