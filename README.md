@@ -1,354 +1,274 @@
-# PDF Chatbot
+<div align="center">
 
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=00D4FF&center=true&vCenter=true&width=700&lines=🤖+AI+Tour+Assistant+Chatbot;Context-Aware+RAG+System;Bangladesh+Travel+Intelligence" alt="Typing SVG" />
+
+<br/>
+
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-Framework-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-0078D4?style=for-the-badge&logo=meta&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-TinyLlama-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+<br/>
+
+> **An advanced AI-powered context-aware Q&A system** that answers Bangladesh tourism queries using semantic search over a structured PDF knowledge base — grounded in real data, not hallucinations.
+
+<br/>
+
+[🚀 Quick Start](#-installation--setup) · [🧩 How It Works](#-how-it-works) · [🗺️ Knowledge Base](#%EF%B8%8F-knowledge-base) · [📈 Roadmap](#-future-improvements)
 
 ---
 
-## Project Overview
+</div>
 
-PDF Chatbot is a conversational assistant intended to support social network operations (PDF) workflows. Typical uses include incident creation and tracking, automated notifications, health checks, runbook lookups, and integrations with ticketing, monitoring, and chat platforms.
+## 🌟 What Makes This Different?
 
-This repository contains:
-- Bot connectors/adapters for supported platforms
-- Core message processing and command-handling logic
-- Configuration and deployment artifacts
-- Tests and CI configuration
+Traditional search systems fail at understanding **intent and context**. This system doesn't.
 
-Replace this overview with specifics about what this instance of the bot does (e.g., Slack & Discord connectors, LLM usage, rule-based handlers, supported commands).
+| Traditional Search | 🤖 This System |
+|---|---|
+| Keyword matching | Semantic understanding |
+| Stateless queries | Conversational memory |
+| Brittle exact matches | Handles vague & indirect questions |
+| No source tracking | Full source attribution |
+| Slow cold retrieval | Cached embeddings for speed |
 
-## Features
+---
 
-- Multi-platform connectors (Slack, Discord, Telegram, etc.) — add/remove per repo
-- Slash commands and prefix commands
-- Message parsing, intent detection, and routing
-- Integration with:
-  - Monitoring systems (Prometheus, Datadog)
-  - Ticketing (Jira, ServiceNow)
-  - Knowledge base and runbooks
-  - LLMs (optional, e.g., OpenAI, local models)
-- Role-based access control and permissions for command execution
-- Observability: structured logs, metrics, traces
-- Unit and integration tests
+## ✨ Key Features
 
-Customize or remove items that do not apply.
+<table>
+<tr>
+<td width="50%">
 
-## Tech Stack & Languages
+**🧠 Context-Aware Memory**
+Understands follow-up queries by retaining conversational context across turns.
 
-- Primary language(s): [e.g., Python, Node.js, TypeScript, Go] — replace with actual languages
-- Framework(s): [e.g., FastAPI, Express, NestJS, Flask]
-- Bot SDKs: [e.g., @slack/bolt, discord.js, python-telegram-bot]
-- Persistence: [e.g., PostgreSQL, Redis]
-- Messaging/Queue: [e.g., RabbitMQ, Kafka, SQS]
-- Containerization: Docker
-- CI: GitHub Actions (example), adjust as needed
+**🔍 Smart Query Understanding**
+Handles vague, indirect, and intent-based questions — not just exact phrases.
 
-Note: Update this list to reflect the repository's actual composition.
+**📄 PDF Knowledge Retrieval**
+Extracts and processes structured + unstructured tourism data directly from PDFs.
 
-## Architecture
+</td>
+<td width="50%">
 
-High-level components:
-- Connectors / Adapters: platform-specific glue code that converts platform events to internal messages
-- Router / Dispatcher: core pipeline that routes messages to handlers
-- Handlers / Plugins: implement commands and functionality (incident creation, status checks)
-- Persistence layer: store state, session context, and metadata
-- External integrations: ticketing, monitoring, LLM providers
-- Observability: logging, metrics, traces
+**🎯 Semantic Search**
+Uses sentence embeddings to retrieve *meaningfully relevant* content — not just keyword hits.
 
-(Optional) Add or link an architecture diagram under `/docs` or `/assets`.
+**📌 Anti-Hallucination Citations**
+Every answer is grounded with an exact source reference (page + line).
 
-## Prerequisites
+**⚡ Caching & Optimization**
+Efficient embedding storage and fast retrieval pipeline for real-time response.
 
-- OS: macOS, Linux, or Windows
-- Node.js >= 16.x (if Node) or Python >= 3.8/3.9 (if Python)
-- Docker & Docker Compose (optional)
-- Access to required API keys and credentials (see [Environment Variables](#environment-variables))
+</td>
+</tr>
+</table>
 
-## Installation
+---
 
-Clone the repository:
-```bash
-git clone https://github.com/anik2644/PDF_chatbot.git
-cd PDF_chatbot
+## 🧩 How It Works
+
+```
+User Query
+    │
+    ▼
+┌─────────────────────┐
+│  Embedding Model    │  ← sentence-transformers/all-MiniLM-L6-v2
+│  (Query → Vector)   │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│   FAISS Vector DB   │  ← Semantic similarity search
+│  (Top-K Retrieval)  │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│  Context Injection  │  ← Retrieved chunks + conversation history
+│  into LLM Prompt    │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│   TinyLlama LLM     │  ← Generates grounded, human-like answer
+│   Response + Source │
+└─────────────────────┘
 ```
 
-Install dependencies (choose appropriate block for your language stack):
+**Pipeline Steps:**
 
-- Node.js / TypeScript
-```bash
-# using npm
-npm install
+1. 📥 Load and preprocess PDF knowledge base
+2. ✂️ Chunk text into semantically coherent segments
+3. 🔍 Generate embeddings for each chunk
+4. 📚 Index embeddings into FAISS vector database
+5. 💬 User submits a natural language query
+6. 🧠 Query is vectorized using the same embedding model
+7. 🎯 Top-K relevant context chunks are retrieved
+8. 🔗 Context + history injected into the LLM prompt
+9. 🤖 Structured, cited answer is returned to the user
 
-# or with yarn
-yarn install
+---
+
+## 🗺️ Knowledge Base
+
+> A curated **Bangladesh Tourism PDF dataset** covering 10 major destinations — structured for high-recall semantic retrieval.
+
+<details>
+<summary><b>🏝️ Cox's Bazar</b> — World's Longest Natural Sea Beach</summary>
+
+Cox's Bazar stretches over **120 kilometers** along the Bay of Bengal — the longest unbroken natural sea beach on earth. Key highlights include **Himchari National Park** (waterfalls + mountainous terrain) and **Inani Beach** (coral and stone formations visible at low tide). A vivid blend of natural beauty and authentic fishing culture.
+
+</details>
+
+<details>
+<summary><b>🌳 The Sundarbans</b> — UNESCO World Heritage Mangrove Forest</summary>
+
+The **largest mangrove forest in the world**, the Sundarbans is home to the iconic **Royal Bengal Tiger**, 260+ bird species, crocodiles, and spotted deer. Tourism centers on boat cruises through tidal waterways and visits to wildlife sanctuaries like **Kotka** and **Kochikhali**.
+
+</details>
+
+<details>
+<summary><b>🍃 Srimangal</b> — Tea Capital of Bangladesh</summary>
+
+Nestled among rolling hills and lush tea estates, Srimangal is famed for its **Seven-Layer Tea** and the biodiversity of **Lawachara National Park** — home to the endangered **Western Hoolock Gibbon**. Also features the serene **Madhabpur Lake**.
+
+</details>
+
+<details>
+<summary><b>🏞️ Rangamati</b> — Lake District of the Hill Tracts</summary>
+
+Built around **Kaptai Lake** — Bangladesh's largest artificial lake — Rangamati offers the iconic **Hanging Bridge**, **Shuvalong Falls**, and immersive cultural experiences from **Chakma, Marma, and Tripura** indigenous communities.
+
+</details>
+
+<details>
+<summary><b>⛰️ Bandarban</b> — Adventure Capital of Bangladesh</summary>
+
+Bandarban is the go-to for trekkers and thrill-seekers, featuring **Nilgiri**, **Nilachal**, **Boga Lake**, and the stunning **Shoilo Propat** waterfall. Rich in indigenous culture and high-altitude scenic viewpoints.
+
+</details>
+
+<details>
+<summary><b>🏝️ Saint Martin's Island</b> — Bangladesh's Only Coral Island</summary>
+
+Locally known as **Narikel Jinjira**, this tiny island offers **snorkeling**, coral viewing, sea turtle nesting sites, and peaceful moonlit beaches — the most pristine marine destination in Bangladesh.
+
+</details>
+
+<details>
+<summary><b>🌫️ Sajek Valley</b> — The Roof of Rangamati</summary>
+
+Sajek is famous for its **cloud-filled valleys** and breathtaking sunrise panoramas. Indigenous communities — **Lushai, Pankho, and Tripura** — call this highland home. Best experienced during or just after the **monsoon season**.
+
+</details>
+
+<details>
+<summary><b>🌅 Kuakata</b> — Daughter of the Sea</summary>
+
+Unique in the world for offering **both sunrise and sunset views from the same beach**, Kuakata also features Buddhist temples, the **Fatra mangrove forest**, and traditional fishing villages along a vast shoreline.
+
+</details>
+
+<details>
+<summary><b>🏛️ Paharpur</b> — UNESCO Ancient Buddhist Monastery</summary>
+
+Home to **Somapura Mahavihara**, one of the largest ancient Buddhist monasteries in South Asia and a UNESCO World Heritage Site. Famous for intricate **Pala-era terracotta art** and remarkable historical architecture.
+
+</details>
+
+<details>
+<summary><b>🏙️ Old Dhaka</b> — Mughal Heart of the Capital</summary>
+
+A living museum of **Mughal and colonial history** — featuring **Ahsan Manzil** (the Pink Palace), **Lalbagh Fort**, **Star Mosque**, and **Sadarghat River Port**. The cultural and historical soul of Bangladesh's capital.
+
+</details>
+
+---
+
+## 💬 Example Conversation
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  User  ›  Tell me about Cox's Bazar                             │
+│                                                                  │
+│  Bot   ›  Cox's Bazar is home to the world's longest natural    │
+│           sea beach at 120km. Key attractions include Himchari  │
+│           National Park and Inani Beach's coral formations.     │
+│           📄 Source: Tourism Guide (Page 1, line 4)             │
+├─────────────────────────────────────────────────────────────────┤
+│  User  ›  What's the best time to visit there?                  │
+│           (Follow-up — no location repeated)                    │
+│                                                                  │
+│  Bot   ›  The best time to visit Cox's Bazar is October–March,  │
+│           when weather is pleasant for beach activities.        │
+│           📄 Source: Tourism Guide (Page 2, line 13)            │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-- Python
+> ✅ Notice: The second question never mentioned "Cox's Bazar" — the system resolved the reference from **conversational context**.
+
+---
+
+## ⚙️ Tech Stack
+
+| Component | Technology | Purpose |
+|---|---|---|
+| **Language** | Python 3.10+ | Core runtime |
+| **Embedding Model** | `all-MiniLM-L6-v2` | Semantic vector generation |
+| **LLM** | `TinyLlama-1.1B-Chat` | Response generation |
+| **Orchestration** | LangChain | RAG pipeline management |
+| **Vector Store** | FAISS | Fast similarity search |
+| **Document Loader** | PyPDF | PDF parsing & chunking |
+
+---
+
+## 🚀 Installation & Setup
+
 ```bash
-python -m venv .venv
-source .venv/bin/activate      # macOS / Linux
-.venv\Scripts\activate         # Windows (PowerShell/CMD)
+# 1. Clone the repository
+git clone https://github.com/anik2644/pdf_chatbot.git
+cd pdf_chatbot
+
+# 2. Install dependencies
 pip install -r requirements.txt
+
+# 3. Run the chatbot
+python main.py
 ```
-
-## Configuration
-
-Configuration should be provided via environment variables or a secret manager. Do NOT commit secrets to the repository.
-
-Create a `.env` file for local development (and add it to `.gitignore`).
-
-Example `.env`:
-```
-# Platform credentials
-SLACK_BOT_TOKEN=your-slack-bot-token
-SLACK_SIGNING_SECRET=your-slack-signing-secret
-DISCORD_BOT_TOKEN=your-discord-bot-token
-TELEGRAM_BOT_TOKEN=your-telegram-bot-token
-
-# LLM / AI provider (optional)
-OPENAI_API_KEY=your-openai-api-key
-
-# Database
-DATABASE_URL=postgres://user:pass@localhost:5432/PDF
-REDIS_URL=redis://localhost:6379/0
-
-# Other
-LOG_LEVEL=info
-PORT=3000
-```
-
-Update keys/values to match the repository's expected env names.
-
-## Environment Variables
-
-List all environment variables required by the app and their descriptions. Example:
-
-- SLACK_BOT_TOKEN — Slack bot token (xoxb-...)
-- SLACK_SIGNING_SECRET — Slack signing secret for verification
-- DISCORD_BOT_TOKEN — Discord bot token
-- TELEGRAM_BOT_TOKEN — Telegram bot token
-- OPENAI_API_KEY — API key for OpenAI or other LLM provider
-- DATABASE_URL — Postgres connection string
-- REDIS_URL — Redis connection URL
-- LOG_LEVEL — Logging verbosity (debug, info, warn, error)
-- PORT — HTTP port for webhooks
-
-If the repo has many variables, add a `docs/env.md`.
-
-## Running Locally
-
-Start the app with the appropriate command:
-
-- Node.js
-```bash
-npm run dev
-# or build + run
-npm run build
-node ./dist/index.js
-```
-
-- Python (FastAPI example)
-```bash
-uvicorn app.main:app --reload --port 3000
-```
-
-If webhooks need to be tested from external services, use a tunneling tool (ngrok):
-```bash
-ngrok http 3000
-```
-Then update platform webhook URLs to point at the public ngrok URL.
-
-## Docker (optional)
-
-Build the Docker image:
-```bash
-docker build -t PDF_chatbot:latest .
-```
-
-Run with environment variables:
-```bash
-docker run --env-file .env -p 3000:3000 PDF_chatbot:latest
-```
-
-If a `docker-compose.yml` exists:
-```bash
-docker compose up --build
-```
-
-## Usage & Examples
-
-Common commands and examples (update for your bot command set):
-
-- Create an incident (slash command):
-```
-/incident create "Database outage" severity=critical
-```
-
-- Check service status (prefix command):
-```
-!status database
-```
-
-- Ask runbook question:
-```
-/runbook show "Restart Redis"
-```
-
-- Example webhook payloads and expected responses should be added under `/docs/examples`.
-
-## Testing
-
-Unit and integration tests:
-
-- Node.js
-```bash
-npm test
-```
-
-- Python (pytest)
-```bash
-pytest
-```
-
-Mock external APIs in tests using libraries like nock (Node) or responses/pytest-mock (Python).
-
-CI should run linting, tests, and security scans.
-
-## CI / CD
-
-If using GitHub Actions, include workflows under `.github/workflows/` for:
-- linting
-- unit tests
-- build
-- container image build and push (optional)
-- automated deployment to staging/production
-
-Example GitHub Actions steps:
-- Checkout
-- Setup Node/Python
-- Install dependencies
-- Run linter
-- Run tests
-- Build and publish artifacts (Docker image, npm package)
-
-Add status badges to the top of this README if CI is in place.
-
-## Deployment
-
-Document how to deploy to your environment (examples below):
-
-- Kubernetes:
-  - Build and push Docker image to registry
-  - Update Deployment manifests and apply
-  - Use rolling updates and health checks
-
-- Serverless / PaaS:
-  - Deploy using provider CLI (Heroku, AWS Elastic Beanstalk, Azure App Service)
-
-- VM:
-  - Pull latest image or git pull + restart service manager (systemd)
-
-Include rollback procedures and any runbook for emergency changes.
-
-## Logging & Monitoring
-
-- Structured logs (JSON) via the configured logger
-- Metrics exported to Prometheus (if implemented)
-- Traces using OpenTelemetry (optional)
-- Alerts configured in your monitoring system for:
-  - Bot downtime
-  - High error rates or latency
-  - Rate-limited API responses
-
-Provide log access instructions (where logs are aggregated: CloudWatch, Datadog, ELK, etc.).
-
-## Troubleshooting & FAQs
-
-Common issues:
-- Bot fails to start:
-  - Check logs for missing env vars
-  - Ensure DB and cache are reachable
-- Webhook verification failing:
-  - Check signing secret and timestamp handling
-  - Ensure request body is unmodified by proxies
-- API rate limits:
-  - Implement exponential backoff and retries
-  - Use a centralized rate limiter per platform token
-
-Add project-specific problems and solutions in `/docs/troubleshooting.md`.
-
-## Contributing
-
-We welcome contributions.
-
-Steps:
-1. Fork the repository
-2. Create a feature branch
-```bash
-git checkout -b feature/your-feature
-```
-3. Write tests and documentation for your change
-4. Commit and push your branch
-5. Open a Pull Request describing the change
-
-Include a `CONTRIBUTING.md` with coding standards, branch naming, commit message conventions, and review expectations.
-
-## Code of Conduct
-
-Add or link to a `CODE_OF_CONDUCT.md` file that outlines community expectations for contribution and behavior.
-
-## Security
-
-If you find a security vulnerability:
-- Do not post it publicly
-- Contact maintainers privately (add preferred contact)
-- Provide reproduction steps, affected versions, and severity
-
-Link to `SECURITY.md` if present.
-
-## License
-
-Specify a license (example: MIT). Add `LICENSE` file to the repository.
-
-Example:
-```
-This project is licensed under the MIT License - see the LICENSE file for details
-```
-
-## Acknowledgements
-
-List third-party libraries, frameworks, tutorials, and contributors.
-
-## Maintainers & Contact
-
-- Maintainer: anik2644 — https://github.com/anik2644
-- Preferred contact: [email or other contact method — replace]
 
 ---
 
-Appendices & Additional Files
-- `/docs` — detailed docs and runbooks
-- `/connectors` — per-platform connector implementations and README for each
-- `/examples` — example webhook payloads and responses
-- `/tests` — unit and integration tests
-- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `LICENSE`
+## 📈 Future Improvements
+
+- [ ] 📚 **Multi-document support** — ingest multiple travel PDFs simultaneously
+- [ ] 🎤 **Voice interaction** — speech-to-text input & TTS output
+- [ ] 🌐 **Multilingual support** — English + বাংলা (Bangla)
+- [ ] 👍 **User feedback loop** — thumbs up/down for retrieval quality
+- [ ] 📊 **Evaluation dashboard** — accuracy & retrieval quality metrics
+- [ ] 🗺️ **Interactive map integration** — visual destination explorer
 
 ---
 
-How to add this README to the repository locally
-1. Create the file locally:
-```bash
-# from repository root
-cat > README.md <<'README'
-(paste the contents of this file here)
-README
-```
-2. Commit and push:
-```bash
-git add README.md
-git commit -m "Add comprehensive README"
-git push origin <your-branch>
-# then open a Pull Request to merge into main/default branch
-```
+## 🎯 Why This Project Stands Out
 
-Notes
-- This README is a template. Replace placeholders (like language, framework, and env var names) with repository-specific values.
-- Consider splitting long sections into focused docs under `/docs` for clarity (platform-specific READMEs, operation runbooks, environment docs).
+This isn't a simple chatbot wrapper. It's a full **Retrieval-Augmented Generation** pipeline that demonstrates:
+
+- ✅ Context-aware multi-turn conversation
+- ✅ Semantic search over a domain-specific knowledge base
+- ✅ Grounded responses with anti-hallucination source attribution
+- ✅ End-to-end NLP pipeline: embeddings → vector DB → LLM inference
+- ✅ Real-world application in the Bangladesh tourism domain
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [anik2644](https://github.com/anik2644)**
+
+*📝 MIT License — free to use, modify, and distribute*
+
+</div>
