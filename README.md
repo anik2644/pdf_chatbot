@@ -1,6 +1,9 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=00D4FF&center=true&vCenter=true&width=700&lines=🤖+AI+Tour+Assistant+Chatbot;Context-Aware+RAG+System;Bangladesh+Travel+Intelligence" alt="Typing SVG" />
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=800&color=00D4FF&background=F9FF0200&center=true&vCenter=true&width=700&height=65&lines=AI+Tour+Assistant+Chatbot;Context-Aware+RAG+System;Bangladesh+Tour+Spots)](https://git.io/typing-svg)
+
+# 🧭 AI Tour Assistant — Bangladesh
+### *Context-Aware RAG Chatbot for Travel Discovery*
 
 <br/>
 
