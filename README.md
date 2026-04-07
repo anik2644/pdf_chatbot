@@ -201,7 +201,7 @@ A living museum of **Mughal and colonial history** — featuring **Ahsan Manzil*
 │  Bot   ›  Cox's Bazar is home to the world's longest natural    │
 │           sea beach at 120km. Key attractions include Himchari  │
 │           National Park and Inani Beach's coral formations.     │
-│           📄 Source: Tourism Guide (Page 1, line 4)             │
+│           📄 Source: Tourism Guide (Page 2, line 4)             │
 ├─────────────────────────────────────────────────────────────────┤
 │  User  ›  What's the best time to visit there?                  │
 │           (Follow-up — no location repeated)                    │
